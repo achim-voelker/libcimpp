@@ -1,0 +1,44 @@
+name: 'build-src and doc'
+description: 'Build src of libcimpp'
+inputs:
+  use_cim_version:  # id of input    
+    required: true
+    default: 'IEC61970_16v29a'
+  input_dir: 
+    required: true
+    default: '~'
+  build_type: 
+    required: true
+    default: 'src'
+outputs:
+  some-out: 
+    description: "some testy output"
+    value: ${{ steps.random-number-generator.outputs.filesNo }}
+  some-out1: 
+    description: "some testy output"
+    value: ${{ steps.random-number-generator.outputs.filesNo }}
+
+runs: 
+  using: "composite"
+  steps:
+      - run: cd ${{inputs.input_dir}}
+        shell: bash
+      - run: cmake -E make_directory ${{inputs.input_dir}}/build/${{inputs.use_cim_version}}
+        shell: bash
+      - run: cd build/${{inputs.use_cim_version }} #cd ${{inputs.input_dir}}/build/${{inputs.use_cim_version }}
+        shell: bash
+      - run: cmake ${{inputs.input_dir}} -DUSE_CIM_VERSION=${{inputs.use_cim_version }}
+        shell: bash
+      if: contains(${{ <build_type> }}, 'src')
+        - run: make -j8
+          shell: bash
+      if: contains(${{ <build_type> }}, 'doc')
+        - run: make doc
+          shell: bash
+        uses: actions/upload-artifact@v2
+        with:
+          name: doc
+          path: ${{inputs.input_dir}}/build/${{inputs.use_cim_version}}/doc/html
+          retention-days: 90
+
+
