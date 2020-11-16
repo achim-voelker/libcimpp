@@ -87,6 +87,6 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: doc
-        path: ${{runner.workspace}}/libcimpp/libcimpp/build/${{inputs.use_cim_version}}/doc/html
+        path: ${{runner.workspace}}/libcimpp/libcimpp/build/CGMES_2.4.15_27JAN2020/doc/html
         retention-days: 90
 
