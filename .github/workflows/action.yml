@@ -13,6 +13,9 @@ inputs:
 runs: 
   using: "composite"
   steps:
+      - name: Install Doxygen
+        run: sudo apt-get install doxygen 
+        shell: bash 
       - run: cd ${{inputs.input_dir}}
         shell: bash
       - run: cmake -E make_directory ${{inputs.input_dir}}/build/${{inputs.use_cim_version}}
@@ -21,10 +24,6 @@ runs:
         shell: bash
       - run: cmake ${{inputs.input_dir}} -DUSE_CIM_VERSION=${{inputs.use_cim_version }}
         shell: bash
-
-      - name: Install Doxygen
-        run: sudo apt-get install doxygen 
-        shell: bash 
 
       - name: build-doc
         run: make doc
