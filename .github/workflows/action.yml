@@ -23,11 +23,11 @@ runs:
         shell: bash
       
       - name: build-src 
-        run: ${{contains( ${{inputs.build_type}} , 'src')}} && make -j8
+        run: make -j8
         shell: bash
 
       - name: build-doc
-        run: ${{contains( ${{inputs.build_type}} , 'doc')}} && make doc
+        run: make doc
         shell: bash
 
       - uses: actions/upload-artifact@v2
