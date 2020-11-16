@@ -22,6 +22,8 @@ runs:
       - run: cmake ${{inputs.input_dir}} -DUSE_CIM_VERSION=${{inputs.use_cim_version }}
         shell: bash
 
+      - name: Install Doxygen
+        run: sudo apt-get install doxygen 
       - name: build-doc
         run: make doc
         shell: bash
