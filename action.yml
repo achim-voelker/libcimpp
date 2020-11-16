@@ -22,18 +22,19 @@ runs:
       - run: cmake ${{inputs.input_dir}} -DUSE_CIM_VERSION=${{inputs.use_cim_version }}
         shell: bash
       
-      - run: make -j8
+      - name: 'build-src'
         if: contains(${{ <build_type> }}, 'src')
+        run: make -j8
         shell: bash
-      
-      - run: make doc
+
+      - name: 'build-doc'
+	if: contains(${{ <build_type> }}, 'doc')
+        run: make doc
         shell: bash
-        if: contains(${{ <build_type> }}, 'doc')
-      - uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2
         with:
           name: doc
           path: ${{inputs.input_dir}}/build/${{inputs.use_cim_version}}/doc/html
           retention-days: 90
-        if: contains(${{ <build_type> }}, 'doc')
 
 
