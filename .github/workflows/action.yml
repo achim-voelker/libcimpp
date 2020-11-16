@@ -27,7 +27,7 @@ runs:
         shell: bash
 
       - name: build-doc
-       run: ${{contains( ${{inputs.build_type}} , 'doc')}} && make doc
+        run: ${{contains( ${{inputs.build_type}} , 'doc')}} && make doc
         shell: bash
       - uses: actions/upload-artifact@v2
         with:
