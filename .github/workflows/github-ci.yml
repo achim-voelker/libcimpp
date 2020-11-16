@@ -17,17 +17,17 @@ jobs:
     - uses: actions/checkout@v2    
     - name: Checkout submodules
       run: git submodule update --init --recursive
-    - uses: achim-voelker/libcimpp/.github/workflows/@v7.999
+    - uses: achim-voelker/libcimpp/.github/workflows/@v8.0
       with: 
         use_cim_version: 'IEC61970_16v29a'
         input_dir: '${{runner.workspace}}/libcimpp/'
         build_type: 'src'
 
-#    - uses: actions/upload-artifact@v2
-#      with:
-#        name: doc
-#        path: ${{runner.workspace}}/libcimpp/libcimpp/build/IEC61970_16v29a/doc/html
-#        retention-days: 90
+    - uses: actions/upload-artifact@v2
+      with:
+        name: doc
+        path: ${{runner.workspace}}/libcimpp/libcimpp/build/IEC61970_16v29a/doc/html
+        retention-days: 90
 
 
 

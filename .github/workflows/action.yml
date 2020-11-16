@@ -29,13 +29,6 @@ runs:
       - name: build-doc
         run: make doc
         shell: bash
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: doc
-          path: ${{inputs.input_dir}}/build/${{inputs.use_cim_version}}/doc/html
-          retention-days: 90
-
       
       - name: build-src 
         run: make -j8
