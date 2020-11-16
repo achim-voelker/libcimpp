@@ -10,14 +10,6 @@ inputs:
   build_type: 
     required: true
     default: 'src'
-outputs:
-  some-out: 
-    description: "some testy output"
-    value: ${{ steps.random-number-generator.outputs.filesNo }}
-  some-out1: 
-    description: "some testy output"
-    value: ${{ steps.random-number-generator.outputs.filesNo }}
-
 runs: 
   using: "composite"
   steps:
@@ -29,16 +21,19 @@ runs:
         shell: bash
       - run: cmake ${{inputs.input_dir}} -DUSE_CIM_VERSION=${{inputs.use_cim_version }}
         shell: bash
-      if: contains(${{ <build_type> }}, 'src')
-        - run: make -j8
-          shell: bash
-      if: contains(${{ <build_type> }}, 'doc')
-        - run: make doc
-          shell: bash
-        uses: actions/upload-artifact@v2
+      
+      - run: make -j8
+        if: contains(${{ <build_type> }}, 'src')
+        shell: bash
+      
+      - run: make doc
+        shell: bash
+        if: contains(${{ <build_type> }}, 'doc')
+      - uses: actions/upload-artifact@v2
         with:
           name: doc
           path: ${{inputs.input_dir}}/build/${{inputs.use_cim_version}}/doc/html
           retention-days: 90
+        if: contains(${{ <build_type> }}, 'doc')
 
 
