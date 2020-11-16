@@ -45,7 +45,6 @@ jobs:
         input_dir: '${{runner.workspace}}/libcimpp/'
 
   build-src-CGMES_2-4-15_27JAN2020:
-  build-src-IEC61970_16v29a_IEC61968_12v08:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2    
