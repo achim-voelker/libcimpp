@@ -33,25 +33,25 @@ jobs:
         use_cim_version: 'IEC61970_17v07'
         input_dir: '${{runner.workspace}}/libcimpp/'
 
-
   build-src-IEC61970_16v29a_IEC61968_12v08:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2    
     - name: Checkout submodules
       run: git submodule update --init --recursive
-    - uses: achim-voelker/libcimpp/@v8.5
+    - uses: achim-voelker/libcimpp/.github/workflows/@v8.5
       with: 
         use_cim_version: 'IEC61970_16v29a_IEC61968_12v08'
         input_dir: '${{runner.workspace}}/libcimpp/'
 
   build-src-CGMES_2-4-15_27JAN2020:
+  build-src-IEC61970_16v29a_IEC61968_12v08:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2    
     - name: Checkout submodules
       run: git submodule update --init --recursive
-    - uses: achim-voelker/libcimpp/@v8.5
+    - uses: achim-voelker/libcimpp/.github/workflows/@v8.5
       with: 
         use_cim_version: 'CGMES_2.4.15_27JAN2020'
         input_dir: '${{runner.workspace}}/libcimpp/'
