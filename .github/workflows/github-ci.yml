@@ -23,6 +23,13 @@ jobs:
         input_dir: '${{runner.workspace}}/libcimpp/'
         build_type: 'src'
 
+    - uses: actions/upload-artifact@v2
+      with:
+        name: doc
+        path: ${{runner.workspace}}/libcimpp/libcimpp/build/IEC61970_16v29a/doc/html
+        retention-days: 90
+
+
 
   build-src-IEC61970_17v07:
     runs-on: ubuntu-latest
@@ -30,7 +37,7 @@ jobs:
     - uses: actions/checkout@v2    
     - name: Checkout submodules
       run: git submodule update --init --recursive
-    - uses: achim-voelker/libcimpp/@v7.91
+    - uses: achim-voelker/libcimpp/@v7.6
       with: 
         use_cim_version: 'IEC61970_17v07'
         input_dir: '${{runner.workspace}}/libcimpp/'
@@ -71,22 +78,4 @@ jobs:
 #          cd ${{runner.workspace}}/libcimpp/build/IEC61970_17v07 
 #          cmake ../.. -DUSE_CIM_VERSION=IEC61970_17v07
 #          make -j8
-
-  build-doc-IEC61970_17v07:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2    
-    - name: Checkout submodules
-      run: git submodule update --init --recursive
-    - uses: achim-voelker/libcimpp/@v7.992
-      with: 
-        use_cim_version: 'CGMES_2.4.15_27JAN2020'
-        input_dir: '${{runner.workspace}}/libcimpp/'
-        build_type: 'doc'
-
-    - uses: actions/upload-artifact@v2
-      with:
-        name: doc
-        path: ${{runner.workspace}}/libcimpp/libcimpp/build/CGMES_2.4.15_27JAN2020/doc/html
-        retention-days: 90
 
