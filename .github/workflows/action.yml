@@ -28,6 +28,13 @@ runs:
       - name: build-doc
         run: make doc
         shell: bash
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: doc
+          path: ${{runner.workspace}}/libcimpp/build/IEC61970_16v29a/doc/html
+          retention-days: 90
+
       
       - name: build-src 
         run: make -j8
