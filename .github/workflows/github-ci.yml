@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v2    
     - name: Checkout submodules
       run: git submodule update --init --recursive
-    - uses: achim-voelker/libcimpp/.github/workflows/@v7.94
+    - uses: achim-voelker/libcimpp/.github/workflows/@v7.95
       with: 
         use_cim_version: 'IEC61970_16v29a'
         input_dir: '${{runner.workspace}}/libcimpp/'
@@ -78,7 +78,7 @@ jobs:
     - uses: actions/checkout@v2    
     - name: Checkout submodules
       run: git submodule update --init --recursive
-    - uses: achim-voelker/libcimpp/@v7.94
+    - uses: achim-voelker/libcimpp/@v7.95
       with: 
         use_cim_version: 'CGMES_2.4.15_27JAN2020'
         input_dir: '${{runner.workspace}}/libcimpp/'
