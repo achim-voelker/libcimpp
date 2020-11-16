@@ -22,16 +22,13 @@ runs:
       - run: cmake ${{inputs.input_dir}} -DUSE_CIM_VERSION=${{inputs.use_cim_version }}
         shell: bash
       
-      - name: 'build-src'
-        if: ${{contains( ${{inputs.build_type}} , 'src')}}
-        run: make -j8
+        run: ${{contains( ${{inputs.build_type}} , 'src')}} && make -j8
         shell: bash
 
       - name: 'build-doc'
-	if: ${{contains( ${{inputs.build_type}} , 'doc')}}
-        run: make doc
+        run: ${{contains( ${{inputs.build_type}} , 'doc')}} && make doc
         shell: bash
-        uses: actions/upload-artifact@v2
+        uses: ${{contains( ${{inputs.build_type}} , 'doc')}} && actions/upload-artifact@v2
         with:
           name: doc
           path: ${{inputs.input_dir}}/build/${{inputs.use_cim_version}}/doc/html
