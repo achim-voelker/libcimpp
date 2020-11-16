@@ -23,12 +23,12 @@ runs:
         shell: bash
       
       - name: 'build-src'
-        if: contains(${{ <build_type> }}, 'src')
+        if: ${{contains( ${{inputs.build_type}} , 'src')}}
         run: make -j8
         shell: bash
 
       - name: 'build-doc'
-	if: contains(${{ <build_type> }}, 'doc')
+	if: ${{contains( ${{inputs.build_type}} , 'doc')}}
         run: make doc
         shell: bash
         uses: actions/upload-artifact@v2
