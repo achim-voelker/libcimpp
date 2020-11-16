@@ -7,9 +7,6 @@ inputs:
   input_dir: 
     required: true
     default: '~'
-  build_type: 
-    required: true
-    default: 'src'
 runs: 
   using: "composite"
   steps:
