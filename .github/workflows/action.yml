@@ -24,6 +24,8 @@ runs:
 
       - name: Install Doxygen
         run: sudo apt-get install doxygen 
+        shell: bash 
+
       - name: build-doc
         run: make doc
         shell: bash
