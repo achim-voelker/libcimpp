@@ -29,13 +29,13 @@ jobs:
     - run: ls -la
       shell: bash
 
-    - run: cd build
+    - run: cd build/
       shell: bash
 
     - run: ls -la
       shell: bash
 
-    - run: cd IEC61970_16v29a
+    - run: cd IEC61970_16v29a/
       shell: bash
 
     - run: ls -la
