@@ -22,9 +22,9 @@ jobs:
         use_cim_version: 'IEC61970_16v29a'
         input_dir: '${{runner.workspace}}/libcimpp/'
     - run: ls -la ${{runner.workspace}}/libcimpp/libcimpp
-    - shell: bash
+      shell: bash
     - run: ls -la ${{runner.workspace}}/libcimpp/libcimpp/build/IEC61970_16v29a
-    - shell: bash
+      shell: bash
     - uses: actions/upload-artifact@v2
       with:
         name: doc
