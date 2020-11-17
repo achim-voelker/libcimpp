@@ -11,7 +11,7 @@ env:
 
 jobs:
 
-  build-src-IEC61970_16v29a:
+  build-doc-IEC61970_16v29a:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2    
@@ -38,7 +38,7 @@ jobs:
 
 
 
-  build-src-IEC61970_17v07:
+  build-doc-IEC61970_17v07:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2    
@@ -65,7 +65,7 @@ jobs:
         path: ${{runner.workspace}}/libcimpp/build/IEC61970_17v07/doc/html
         retention-days: 90
 
-  build-src-IEC61970_16v29a_IEC61968_12v08:
+  build-doc-IEC61970_16v29a_IEC61968_12v08:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2    
@@ -93,7 +93,7 @@ jobs:
         retention-days: 90
 
 
-  build-src-CGMES_2-4-15_27JAN2020:
+  build-doc-CGMES_2-4-15_27JAN2020:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2    
@@ -119,5 +119,6 @@ jobs:
         name: doc
         path: ${{runner.workspace}}/libcimpp/build/CGMES_2.4.15_27JAN2020/doc/html
         retention-days: 90
+
 
 
